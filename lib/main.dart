@@ -25,19 +25,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _hexInput = "";
-  String _rgbInput = "";
   double _screenWidth;
+  int _backgroundColor = 0xFFffffff;
 
-  void _incrementCounter() {
-    setState(() {});
+  void _onConvert(String value) {
+    setState(() {
+      _backgroundColorConverter(value);
+    });
+  }
+
+  _backgroundColorConverter(String _hexColor) {
+    _hexColor = _hexColor.replaceAll("#", "");
+
+    if (_hexColor.length < 6) _hexColor += "ffffff";
+
+    _backgroundColor = int.parse("0xFF$_hexColor");
+    return _backgroundColor;
   }
 
   @override
   Widget build(BuildContext context) {
     _screenWidth = MediaQuery.of(context).size.width / 8;
     return Scaffold(
-      // backgroundColor: Color(0xff000000),
+      backgroundColor: new Color(_backgroundColor),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,12 +57,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: <Widget>[
                   TextField(
-                    style: TextStyle(color: Color(0xffffffff)),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        // color: Color(0xffffffff),
+                        ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Hex',
                     ),
+                    onChanged: _onConvert,
                   ),
+                  Text("Ex. 34495e or #34495e"),
                 ],
               ),
             )
