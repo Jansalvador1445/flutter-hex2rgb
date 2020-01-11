@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(
                 fontSize: 30,
                 color: _inputColor,
+                fontFamily: 'Ibarra',
               ),
             ),
             padding: EdgeInsets.all(50),
@@ -88,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: _inputColor,
+                    fontFamily: 'Ibarra',
                   ),
                   decoration: InputDecoration(
                     focusedBorder: UnderlineInputBorder(
