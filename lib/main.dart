@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
 
@@ -59,6 +61,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return _backgroundColor;
   }
 
+  _launchURL() async {
+    const url = 'https://flutter.dev';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     _screenWidth = MediaQuery.of(context).size.width / 8;
@@ -110,9 +121,68 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   padding: EdgeInsets.all(20),
                 ),
+                Container(
+                  margin: EdgeInsets.only(top: 50),
+                  child: Padding(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "♥ Made with Flutter ♥",
+                          style: TextStyle(
+                              color: _inputColor,
+                              fontFamily: 'Ibarra',
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Jan Salvador Sebastian",
+                          style: TextStyle(
+                              color: _inputColor,
+                              fontFamily: 'Ibarra',
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            OutlineButton(
+                              child: Text(
+                                'LinkedIn',
+                                style: TextStyle(
+                                    color: _inputColor,
+                                    fontFamily: 'Ibarra',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              borderSide: BorderSide(color: _inputColor),
+                              onPressed: () {},
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 3, right: 3),
+                              child: Padding(
+                                padding: EdgeInsets.all(0),
+                              ),
+                            ),
+                            OutlineButton(
+                              child: Text(
+                                'Github',
+                                style: TextStyle(
+                                    color: _inputColor,
+                                    fontFamily: 'Ibarra',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              borderSide: BorderSide(color: _inputColor),
+                              onPressed: () {},
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.all(20),
+                  ),
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
