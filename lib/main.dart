@@ -28,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double _screenWidth;
   int _backgroundColor = 0xFFffffff;
   String _rgbString = "RBG(255,255,255)";
+  Color _inputColor = Color.fromRGBO(0, 0, 0, 1.0);
 
   void _onConvert(String value) {
     setState(() {
@@ -38,16 +39,22 @@ class _MyHomePageState extends State<MyHomePage> {
   _backgroundColorConverter(String _hexColor) {
     _hexColor = _hexColor.replaceAll("#", "");
 
-    if (_hexColor.length < 6) _hexColor += "ffffff";
+    if (_hexColor.length < 6) {
+      _hexColor += "ffffff";
+      _inputColor = Color.fromRGBO(0, 0, 0, 1.0);
+    }
 
     _backgroundColor = int.parse("0xFF$_hexColor");
 
     //Convert Hex to RGB
-    var red = int.parse(_hexColor.substring(0, 2), radix: 16);
-    var blue = int.parse(_hexColor.substring(2, 4), radix: 16);
-    var green = int.parse(_hexColor.substring(4, 6), radix: 16);
+    var _red = int.parse(_hexColor.substring(0, 2), radix: 16);
+    var _blue = int.parse(_hexColor.substring(2, 4), radix: 16);
+    var _green = int.parse(_hexColor.substring(4, 6), radix: 16);
 
-    _rgbString = "RGB($red,$blue,$green)";
+    _rgbString = "RGB($_red,$_blue,$_green)";
+
+    //Foreground Color
+    _inputColor = Color.fromRGBO((_red - 50), (_blue - 50), (_green - 50), 1.0);
 
     return _backgroundColor;
   }
@@ -63,7 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             child: Text(
               _rgbString,
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(
+                fontSize: 30,
+                color: _inputColor,
+              ),
             ),
             padding: EdgeInsets.all(50),
           ),
@@ -77,16 +87,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextField(
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      // color: Color(0xffffffff),
-                      ),
+                    color: _inputColor,
+                  ),
                   decoration: InputDecoration(
-                    // border: InputBorder.none,
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                      color: _inputColor,
+                    )),
                     hintText: 'Hex',
                   ),
                   onChanged: _onConvert,
+                  maxLength: 7,
                 ),
                 Padding(
-                  child: Text("Ex. 34495e or #34495e"),
+                  child: Text(
+                    "Ex. 34495e or #34495e",
+                    style: TextStyle(
+                      color: _inputColor,
+                    ),
+                  ),
                   padding: EdgeInsets.all(20),
                 ),
               ],
