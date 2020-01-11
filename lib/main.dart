@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -59,15 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
     _inputColor = Color.fromRGBO((_red - 50), (_blue - 50), (_green - 50), 1.0);
 
     return _backgroundColor;
-  }
-
-  _launchURL() async {
-    const url = 'https://flutter.dev';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   @override
@@ -154,7 +144,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                     fontWeight: FontWeight.bold),
                               ),
                               borderSide: BorderSide(color: _inputColor),
-                              onPressed: () {},
+                              onPressed: () async {
+                                const url =
+                                    'https://www.linkedin.com/in/jansalvador1445/';
+
+                                if (await canLaunch(url)) {
+                                  await launch(url, forceSafariVC: false);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
+                              },
                             ),
                             Container(
                               margin: EdgeInsets.only(left: 3, right: 3),
@@ -171,7 +170,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                     fontWeight: FontWeight.bold),
                               ),
                               borderSide: BorderSide(color: _inputColor),
-                              onPressed: () {},
+                              onPressed: () async {
+                                const url =
+                                    'https://github.com/Jansalvador1445';
+
+                                if (await canLaunch(url)) {
+                                  await launch(url, forceSafariVC: false);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
+                              },
                             )
                           ],
                         ),
