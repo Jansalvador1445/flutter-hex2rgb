@@ -12,11 +12,20 @@ A color conversion from Hex to RGB using Flutter.
 - [Flutter - Windows](https://flutter.dev/docs/get-started/install/windows)
 
 ## Usage
+### Mobile Devices
 ```
 git clone https://github.com/Jansalvador1445/flutter-hex2rgb
 cd flutter-hex2rgb
 flutter pub get
 flutter run
+```
+
+### Web
+```
+git clone https://github.com/Jansalvador1445/flutter-hex2rgb
+cd flutter-hex2rgb
+flutter pub get
+flutter run -d chrome
 ```
 
 ## References
