@@ -2,8 +2,10 @@
 
 A color conversion from Hex to RGB using Flutter.
 
-## Prerequisites
+## Prerequisites or Plugins
 - [Flutter](https://flutter.dev) - Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
+
+- [url_launcher](https://pub.dev/packages/url_launcher) -A Flutter plugin for launching a URL in the mobile platform. Supports iOS and Android.
 
 
 ## Installation
