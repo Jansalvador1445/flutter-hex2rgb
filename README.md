@@ -3,7 +3,13 @@
 A color conversion from Hex to RGB using Flutter.
 
 ## Prerequisites
-- [Flutter](https://flutter.dev/docs/get-started/install)
+- [Flutter](https://flutter.dev) - Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
+
+
+## Installation
+- [Flutter - Mac](https://flutter.dev/docs/get-started/install/macos)
+- [Flutter - Linux](https://flutter.dev/docs/get-started/install/linux)
+- [Flutter - Windows](https://flutter.dev/docs/get-started/install/windows)
 
 ## Usage
 ```
@@ -14,6 +20,6 @@ flutter run
 ```
 
 ## References
-Joshua De Guzman - [Colorify](https://github.com/joshuadeguzman/colorify)
-
+- Joshua De Guzman - [Colorify](https://github.com/joshuadeguzman/colorify)
+    
 
